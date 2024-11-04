@@ -13,34 +13,36 @@
     </div>
 
     <script>
-        // Defina a data e hora para a contagem regressiva
-        var countDownDate = new Date().getTime() + (5 * 24 * 60 * 60 * 1000);
-
-        // Atualize a contagem regressiva a cada 1 segundo
-        var x = setInterval(function() {
-
-            // Obtenha a data e hora de agora
+        // Função para calcular o tempo restante
+        function updateTimer() {
             var now = new Date().getTime();
-
-            // Calcule a distância entre agora e a data da contagem regressiva
             var distance = countDownDate - now;
 
-            // Cálculos de tempo para dias, horas, minutos e segundos
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
             var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Exiba a contagem regressiva no elemento
             document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
-            // Se a contagem regressiva terminar, exiba o link
             if (distance < 0) {
                 clearInterval(x);
                 document.getElementById("timer").innerHTML = "EXPIRED";
                 document.getElementById("link").classList.add("visible");
             }
-        }, 1000);
+        }
+
+        // Verificar se a data de término está armazenada
+        var storedDate = localStorage.getItem('countDownDate');
+        if (storedDate) {
+            var countDownDate = new Date(parseInt(storedDate));
+        } else {
+            var countDownDate = new Date().getTime() + (5 * 24 * 60 * 60 * 1000);
+            localStorage.setItem('countDownDate', countDownDate);
+        }
+
+        var x = setInterval(updateTimer, 1000);
+        updateTimer();  // Inicialize o timer imediatamente
     </script>
 </body>
 </html>
