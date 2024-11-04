@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timer de 5 Dias</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
 </head>
 <body>
     <div class="timer-container">
@@ -13,6 +15,20 @@
     </div>
 
     <script>
+        // Configuração do Firebase
+        var firebaseConfig = {
+            apiKey: "SUACHAVEAPI",
+            authDomain: "SEUDOMINIO.firebaseapp.com",
+            databaseURL: "https://SEUDOMINIO.firebaseio.com",
+            projectId: "SEUIDPROJETO",
+            storageBucket: "SEUARMAZENAMENTO.appspot.com",
+            messagingSenderId: "SEUMENSAGEIRO",
+            appId: "SEUIDAPP"
+        };
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+        var database = firebase.database();
+
         // Função para calcular o tempo restante
         function updateTimer() {
             var now = new Date().getTime();
@@ -32,17 +48,18 @@
             }
         }
 
-        // Verificar se a data de término está armazenada
-        var storedDate = localStorage.getItem('countDownDate');
-        if (storedDate) {
-            var countDownDate = new Date(parseInt(storedDate));
-        } else {
-            var countDownDate = new Date().getTime() + (5 * 24 * 60 * 60 * 1000);
-            localStorage.setItem('countDownDate', countDownDate);
-        }
-
-        var x = setInterval(updateTimer, 1000);
-        updateTimer();  // Inicialize o timer imediatamente
+        // Verificar se a data de término está armazenada no Firebase
+        var countDownDate;
+        database.ref('countDownDate').once('value').then(function(snapshot) {
+            if (snapshot.exists()) {
+                countDownDate = snapshot.val();
+            } else {
+                countDownDate = new Date().getTime() + (5 * 24 * 60 * 60 * 1000);
+                database.ref('countDownDate').set(countDownDate);
+            }
+            var x = setInterval(updateTimer, 1000);
+            updateTimer();  // Inicialize o timer imediatamente
+        });
     </script>
 </body>
 </html>
