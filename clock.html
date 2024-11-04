@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer de 5 Dias</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="timer-container">
+        <div class="timer" id="timer">5d 0h 0m 0s</div>
+        <div id="link"><a href="https://www.exemplo.com" target="_blank">Clique aqui!</a></div>
+    </div>
+
+    <script>
+        // Defina a data e hora para a contagem regressiva
+        var countDownDate = new Date().getTime() + (5 * 24 * 60 * 60 * 1000);
+
+        // Atualize a contagem regressiva a cada 1 segundo
+        var x = setInterval(function() {
+
+            // Obtenha a data e hora de agora
+            var now = new Date().getTime();
+
+            // Calcule a distância entre agora e a data da contagem regressiva
+            var distance = countDownDate - now;
+
+            // Cálculos de tempo para dias, horas, minutos e segundos
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Exiba a contagem regressiva no elemento
+            document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            // Se a contagem regressiva terminar, exiba o link
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "EXPIRED";
+                document.getElementById("link").classList.add("visible");
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
