@@ -1,40 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rolador de Perícias</title>
+    <title>Rolagem de Perícias</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Rolador de Perícias</h1>
         <div class="pericia">
-            <p>Adestramento</p>
-            <div class="inputs">
-                <label>Bônus: <span id="bonus">0</span></label>
-                <label>Treino:
-                    <select id="treino">
-                        <option value="0">0</option>
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                    </select>
-                </label>
-                <label>Outros:
-                    <input type="number" id="outros" value="0">
-                </label>
+            <div class="pericia-header">
+                <img src="images/dado.png" alt="Ícone do dado" class="dado-icon">
+                <h2>Adestramento</h2>
             </div>
-            <button id="roll-button">
-                <img src="images/dado.png" alt="Rolar dado" class="dado-icon">
-            </button>
+            <div class="pericia-body">
+                <p>Bônus: <span id="bonus">0</span></p>
+                <label for="treino">Treino: </label>
+                <select id="treino">
+                    <option value="0">0</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
+                <br>
+                <label for="outros">Outros: </label>
+                <input type="number" id="outros" value="0" min="0">
+                <br>
+                <button onclick="rolarDado()">Rolar Dado</button>
+            </div>
+            <div id="resultado" class="resultado">
+                Resultado: <span id="resultado-dado">16</span>
+            </div>
         </div>
     </div>
-
-    <div id="resultado-box" class="resultado-box">
-        <span id="resultado">Resultado: 0</span>
-    </div>
-
     <script src="script.js"></script>
 </body>
 </html>
