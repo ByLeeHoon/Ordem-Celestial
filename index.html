@@ -3,37 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perícias</title>
+    <title>Rolador de Perícias</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
+        <h1>Rolador de Perícias</h1>
         <div class="pericia">
-            <div class="nome">
-                <img src="dado.png" alt="Dado" class="dado" onclick="rolarPericia('Adestramento')">
-                <span>Adestramento</span>
+            <p>Adestramento</p>
+            <div class="inputs">
+                <label>Bônus: <span id="bonus">0</span></label>
+                <label>Treino:
+                    <select id="treino">
+                        <option value="0">0</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                    </select>
+                </label>
+                <label>Outros:
+                    <input type="number" id="outros" value="0">
+                </label>
             </div>
-            <div class="bônus">
-                <span>Bônus:</span>
-                <span id="bonus-Adestramento">0</span>
-            </div>
-            <div class="valores">
-                <label>Treino:</label>
-                <select id="treino-Adestramento" onchange="atualizarBonus('Adestramento')">
-                    <option value="0">0</option>
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                </select>
-                <label>Outros:</label>
-                <input type="number" id="outros-Adestramento" value="0" onchange="atualizarBonus('Adestramento')">
-            </div>
-            <div class="resultado" id="resultado-Adestramento">
-                <span>Resultado:</span>
-                <span id="valor-Adestramento">0</span>
-            </div>
+            <button id="roll-button">
+                <img src="images/dado.png" alt="Rolar dado" class="dado-icon">
+            </button>
         </div>
     </div>
+
+    <div id="resultado-box" class="resultado-box">
+        <span id="resultado">Resultado: 0</span>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
