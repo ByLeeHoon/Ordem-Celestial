@@ -18,7 +18,7 @@ function rolarPericia(pericia) {
 
 // Função para enviar o resultado ao Discord
 async function enviarParaDiscord(pericia, rolagem, bonus) {
-    const webhookURL = "https://discord.com/api/webhooks/SEU_WEBHOOK";
+    const webhookURL = "https://discord.com/api/webhooks/1285426560404291687/Pkb3fAR0LOosvxzVyn4PR6oIX20ptqxLYEvqneWjQe_WWR0-4lo-H916jaRAXEVKD-5l";
 
     const data = {
         content: `Rolagem de ${pericia}: 1d20 + ${bonus} = ${rolagem}`,
