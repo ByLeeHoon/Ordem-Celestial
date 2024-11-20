@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolar Perícias</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="pericia-container">
+        <div class="pericia">
+            <div class="nome-pericia">
+                <img src="dado.png" class="dado" onclick="rolarPericia('Adestramento')" alt="Dado">
+                <span>Adestramento</span>
+            </div>
+            <div class="valores">
+                <div class="bônus">
+                    <label>Bônus:</label>
+                    <span id="bonus-Adestramento">0</span>
+                </div>
+                <div class="treino">
+                    <label>Treino:</label>
+                    <select id="treino-Adestramento" onchange="atualizarBonus('Adestramento')">
+                        <option value="0">0</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                    </select>
+                </div>
+                <div class="outros">
+                    <label>Outros:</label>
+                    <input type="number" id="outros-Adestramento" value="0" onchange="atualizarBonus('Adestramento')">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
