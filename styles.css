@@ -10,50 +10,63 @@ body {
     height: 100vh;
 }
 
-.pericia-container {
-    width: 80%;
-    max-width: 600px;
+.container {
+    width: 90%;
+    max-width: 700px;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
 }
 
 .pericia {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #1e1e1e;
-    border-radius: 8px;
-    border: 1px solid #333;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
 }
 
-.nome-pericia {
+.pericia:last-child {
+    border-bottom: none;
+}
+
+.nome {
     display: flex;
     align-items: center;
-}
-
-.nome-pericia img {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-.valores {
-    display: flex;
     gap: 10px;
 }
 
-.valores div {
+.dado {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.bônus, .valores, .resultado {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 5px;
 }
 
-select, input {
+.valores {
+    width: 150px;
+}
+
+input, select {
     background-color: #333;
     color: #fff;
     border: none;
-    padding: 5px;
     border-radius: 4px;
+    text-align: center;
+    padding: 5px;
+    width: 80px;
+}
+
+.resultado {
+    background-color: #333;
+    border-radius: 8px;
+    padding: 5px 10px;
     text-align: center;
 }
