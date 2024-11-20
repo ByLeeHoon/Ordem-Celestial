@@ -1,31 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rolagem de Perícias</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolar Perícias</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>PERÍCIAS</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>PERÍCIA</th>
-          <th>DADOS</th>
-          <th>BÔNUS</th>
-          <th>Treino</th>
-          <th>Outros</th>
-          <th>Resultado</th>
-          <th>Ação</th>
-        </tr>
-      </thead>
-      <tbody id="skillsTable">
-        <!-- As linhas serão adicionadas dinamicamente -->
-      </tbody>
-    </table>
-  </div>
-  <script src="script.js"></script>
+    <div class="pericia-container">
+        <div class="pericia">
+            <div class="nome-pericia">
+                <img src="dado.png" class="dado" onclick="rolarPericia('Adestramento')" alt="Dado">
+                <span>Adestramento</span>
+            </div>
+            <div class="valores">
+                <div class="bônus">
+                    <label>Bônus:</label>
+                    <span id="bonus-Adestramento">0</span>
+                </div>
+                <div class="treino">
+                    <label>Treino:</label>
+                    <select id="treino-Adestramento" onchange="atualizarBonus('Adestramento')">
+                        <option value="0">0</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                    </select>
+                </div>
+                <div class="outros">
+                    <label>Outros:</label>
+                    <input type="number" id="outros-Adestramento" value="0" onchange="atualizarBonus('Adestramento')">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
