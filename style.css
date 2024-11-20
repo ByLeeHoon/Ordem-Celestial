@@ -1,73 +1,96 @@
-/* Geral */
-body {
-    font-family: Arial, sans-serif;
+/* Reseta margens e preenchimentos para um layout limpo */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo geral do corpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #121212;
-    color: #ffffff;
+    text-align: center;
 }
 
 /* Container principal */
 .container {
-    text-align: center;
-    background-color: #1f1f1f;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    background: linear-gradient(145deg, #333, #000);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilização da perícia */
-.pericia {
-    margin: 20px 0;
+/* Título e ícone da perícia */
+.pericia-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.inputs {
-    margin: 10px 0;
-}
-
-label {
+.dado-icon {
+    width: 50px;
+    height: 50px;
     margin-right: 10px;
 }
 
-/* Botão de rolagem */
-#roll-button {
-    background-color: #6200ea;
-    color: white;
+h2 {
+    font-size: 24px;
+    color: #ffdf00;
+}
+
+/* Estilo dos campos de bônus, treino, e outros */
+.pericia-body {
+    margin-bottom: 20px;
+}
+
+#treino, #outros {
+    background-color: #222;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+/* Estilo do botão */
+button {
+    background-color: #ffdf00;
     border: none;
-    border-radius: 50%;
-    padding: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-#roll-button:hover {
-    transform: scale(1.1);
+button:hover {
+    background-color: #fcbf00;
 }
 
-.imagem/dado-icon {
-    width: 50px;
-    height: 50px;
+/* Estilo da caixa de resultado */
+.resultado {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffdf00;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 20px;
+    animation: fadeIn 1s ease-in-out;
 }
 
-/* Caixa de resultado */
-.resultado-box {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background: linear-gradient(45deg, #6200ea, #bb86fc);
-    color: #ffffff;
-    padding: 10px 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.resultado-box.active {
-    opacity: 1;
-    transform: translateY(-10px);
+/* Animação de fade-in */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
