@@ -1,51 +1,59 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #121212;
-  color: white;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.container {
-  width: 90%;
-  max-width: 800px;
-  text-align: center;
+.pericia-container {
+    width: 80%;
+    max-width: 600px;
 }
 
-h1 {
-  margin-bottom: 20px;
+.pericia {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    border: 1px solid #333;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
+.nome-pericia {
+    display: flex;
+    align-items: center;
 }
 
-thead th {
-  background-color: #333333;
-  padding: 10px;
-  border: 1px solid white;
+.nome-pericia img {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
-tbody td {
-  padding: 10px;
-  border: 1px solid white;
+.valores {
+    display: flex;
+    gap: 10px;
 }
 
-button {
-  padding: 5px 10px;
-  background-color: #4444ff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.valores div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-button:hover {
-  background-color: #5555ff;
+select, input {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: center;
 }
