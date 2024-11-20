@@ -1,65 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timer de 5 Dias</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rolagem de Perícias</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="timer-container">
-        <div class="timer" id="timer">5d 0h 0m 0s</div>
-        <div id="link"><a href="https://www.exemplo.com" target="_blank">Clique aqui!</a></div>
-    </div>
-
-    <script>
-        // Configuração do Firebase
-        var firebaseConfig = {
-            apiKey: "SUACHAVEAPI",
-            authDomain: "SEUDOMINIO.firebaseapp.com",
-            databaseURL: "https://SEUDOMINIO.firebaseio.com",
-            projectId: "SEUIDPROJETO",
-            storageBucket: "SEUARMAZENAMENTO.appspot.com",
-            messagingSenderId: "SEUMENSAGEIRO",
-            appId: "SEUIDAPP"
-        };
-        // Inicializar Firebase
-        firebase.initializeApp(firebaseConfig);
-        var database = firebase.database();
-
-        // Função para calcular o tempo restante
-        function updateTimer() {
-            var now = new Date().getTime();
-            var distance = countDownDate - now;
-
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("timer").innerHTML = "EXPIRED";
-                document.getElementById("link").classList.add("visible");
-            }
-        }
-
-        // Verificar se a data de término está armazenada no Firebase
-        var countDownDate;
-        database.ref('countDownDate').once('value').then(function(snapshot) {
-            if (snapshot.exists()) {
-                countDownDate = snapshot.val();
-            } else {
-                countDownDate = new Date().getTime() + (5 * 24 * 60 * 60 * 1000);
-                database.ref('countDownDate').set(countDownDate);
-            }
-            var x = setInterval(updateTimer, 1000);
-            updateTimer();  // Inicialize o timer imediatamente
-        });
-    </script>
+  <div class="container">
+    <h1>PERÍCIAS</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>PERÍCIA</th>
+          <th>DADOS</th>
+          <th>BÔNUS</th>
+          <th>Treino</th>
+          <th>Outros</th>
+          <th>Resultado</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody id="skillsTable">
+        <!-- As linhas serão adicionadas dinamicamente -->
+      </tbody>
+    </table>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
